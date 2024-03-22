@@ -21,69 +21,31 @@ Serving the HTML pages.
 Testing the webserver.
 
 ## PROGRAM:
-from http.server import HTTPServer, BaseHTTPRequestHandler
+from http.server import HTTPServer,BaseHTTPRequestHandler
 
-content = """
 
-<!DOCTYPE html>
+content=''' <!doctype html>
 
-<html>
-    
-<head>
-    
-<title>My webserver</title>
 
-</head>
+<title> My Web Server</title>
 
-<body>
-    
-<h1><u>Languages used iun Web Development</u><h1>
-    
-<ul
-    
-<li>HTML</li>
-    
-<li>CSS</li>
-
-<li>JavaScript</li>
-
-<li>Bootstrap</li>
-
-</body>
-
-</html>
-    
-"""
-
-class myhandler(BaseHTTPRequestHandler):
-
-    def do_GET(self):
-    
-        print("request received")
-    
-        self.send_response(200)
+ ## Top Five Revenue from Companies
         
-        self.send_header('content-type', 'text/html; charset=utf-8')
-        
-        self.end_headers()
-        
-        
-        self.wfile.write(content.encode())
-        
-server_address = ('',80
+![Screenshot 2024-03-23 012337](https://github.com/RITHISHlearn/simplewebserver/assets/145446645/42fe6311-233d-4723-a318-f94a83f69ac5)
+ 
 
-httpd = HTTPServer(server_address,myhandler)
+'''
 
-print("my webserver is running...")
-
-httpd.serve_forever() 
+class MyServer(BaseHTTPRequestHandler): def do_GET(self): print("Get request received...") self.send_response(200) self.send_header("content-type", "text/html")
+self.end_headers() self.wfile.write(content.encode())
 
 
+print("This is my webserver") server_address =('',8000) httpd = HTTPServer(server_address,MyServer) httpd.serve_forever()
 
 
 ## OUTPUT:
-![image](https://github.com/RITHISHlearn/simplewebserver/assets/145446645/f247c8e3-e040-47f8-b4e7-228cfbbd1178)
-![image](https://github.com/RITHISHlearn/simplewebserver/assets/145446645/0f1c13bc-c165-4a44-be62-b8c5cd08ec5c)
+ ![Screenshot 2024-03-23 012215](https://github.com/RITHISHlearn/simplewebserver/assets/145446645/505ef907-fff1-4060-a4e9-6d249ff6d75a)
+![Screenshot 2024-03-23 012230](https://github.com/RITHISHlearn/simplewebserver/assets/145446645/486bb6b9-4d67-47bb-b8f6-e198725f018a)
 
 
 ## RESULT:
