@@ -21,27 +21,124 @@ Serving the HTML pages.
 Testing the webserver.
 
 ## PROGRAM:
+```
 from http.server import HTTPServer,BaseHTTPRequestHandler
 
 
-content=''' <!doctype html>
+content='''
 
+<!doctype html>
 
+<html>
+ 
+<head>
+ 
 <title> My Web Server</title>
 
- ## Top Five Revenue from Companies
-        
-![Screenshot 2024-03-23 012337](https://github.com/RITHISHlearn/simplewebserver/assets/145446645/42fe6311-233d-4723-a318-f94a83f69ac5)
+</head>
+
+<body>
  
+<h1>Top Five Revenue from Companies</h1>
 
-'''
+<table border=2>
+ 
+<tr>
+ 
+<th> Company Name </th>
 
-class MyServer(BaseHTTPRequestHandler): def do_GET(self): print("Get request received...") self.send_response(200) self.send_header("content-type", "text/html")
-self.end_headers() self.wfile.write(content.encode())
+<th> Revenue </th>
+
+<th> Financial Year </th>
+
+</tr>
 
 
-print("This is my webserver") server_address =('',8000) httpd = HTTPServer(server_address,MyServer) httpd.serve_forever()
+<tr>
+ 
+<td> Microsoft </td>
 
+<td> 86$ </td>
+
+<td> 2014 </td>
+
+</tr>
+
+
+<tr>
+ 
+<td> Oracle </td>
+
+<td> 37$ </td>
+
+<td> 2013 </td>
+
+</tr>
+
+
+<tr>
+ 
+<td> SAP </td>
+
+<td> 20$ </td>
+
+<td> 2013 </td>
+
+</tr>
+
+
+<tr>
+ 
+<td> VMware </td>
+
+<td> 5.2$ </td>
+
+<td> 2013 </td>
+
+</tr>
+
+
+<tr>
+ 
+<td> CA Technologies </td>
+
+<td> 4.7$ </td>
+
+<td> 2013 </td>
+
+</tr>
+
+
+</body>
+
+</html>
+
+
+class MyServer(BaseHTTPRequestHandler):
+
+    def do_GET(self):
+
+   
+        print("Get request received...")
+        
+        self.send_response(200) 
+        
+        self.send_header("content-type", "text/html")
+        
+        self.end_headers()
+        
+        self.wfile.write(content.encode())
+        
+
+print("This is my webserver") 
+
+server_address =('',8000)
+
+httpd = HTTPServer(server_address,MyServer)
+
+httpd.serve_forever()
+
+```
 
 ## OUTPUT:
  ![Screenshot 2024-03-23 012215](https://github.com/RITHISHlearn/simplewebserver/assets/145446645/505ef907-fff1-4060-a4e9-6d249ff6d75a)
